@@ -16,13 +16,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clean Install Dependencies
+      - name: Install Dependencies & Rebuild
         run: |
-          npm ci || npm install
+          npm install
+          npm rebuild
 
       - name: Start Bot
         env:
-          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
           DATABASE_URL: ${{ secrets.MONGO_URL }}
           OWNER: ${{ secrets.OWNER }}
           PAIRING_NUMBER: ${{ secrets.PAIRING_NUMBER }}
